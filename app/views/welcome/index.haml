@@ -1,0 +1,22 @@
+.main
+  #welcome_page
+    = render "partials/slider"
+    .top_middle
+      .red_line
+        .left_descript.cf
+          %p Наша задача (совместно с рестораторами и профессионалами розничной торговли) - открыть для потребителя новую категорию продукта - вкусную доступную говядину, которую можно без риска положить на гриль или приготовить себе дома на ужин.
+        .right_descript.cf
+          %h1 ООО "АЛБИФ"
+          %p ООО "Албиф" - сельскохозяйственное предприятие по  производству, переработке и реализации  высококачественной охлажденной мраморной говядины, расположено в Хлевенском районе  Липецкой области.
+    .news_module
+      %h1 НОВОСТИ
+      .border_news
+      %ul
+        - @latest_three_news.each do |row|
+          %li
+            = link_to( get_first_n_symbols(row[:header], 80), "/news/#{row[:id]}", {:class => "hedr"})
+            .bdy
+              = link_to( image_tag("/assets/news/db/#{row[:pic_title]}" ), "/news/#{row[:id]}")
+              %p
+                = get_first_n_symbols( row[:body].gsub(/[<p><\/p>]/, "" ), 100)
+            = link_to("Подробнее", "/news/#{row[:id]}", {:class => "ref"})

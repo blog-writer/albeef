@@ -1,0 +1,10 @@
+ development:
+  adapter: postgresql
+  database: db/development
+  username: postgres
+  password: log777
+  host: localhost
+  encoding: UTF8
+  pool: 5
+  port: 5432
+  timeout: 5000

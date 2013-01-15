@@ -1,0 +1,38 @@
+.main
+  #news_page
+    .pics_module
+    .middle_with_citat
+      .red_line
+        .middle_full_block.noPd
+          %h1 НОВОСТИ
+    - if not @news.nil? and not @news.empty?
+      .main_new_block
+        - @latest_news = @news.first
+        .red_large
+          = formatDate(@latest_news.date)
+        .photo_text
+          .left
+            = link_to( image_tag("/assets/news/db/#{@latest_news.pic_title}"), "/news/#{@latest_news.id}" )
+          .right
+            %a{:href =>"/news/#{@latest_news.id}"}
+              = @latest_news.header
+            = get_first_n_symbols(@latest_news.body, 415).html_safe
+          = link_to( "Подробнее", "/news/#{@latest_news.id}", {:class => "more cf"})
+    .news_list_block
+      %ul
+        - if @news.nil? or @news.empty?
+          %li.no_news Нет новостей
+        - else
+          - @news.each do |value|
+            %li
+              %a{:href => "/news/#{value.id}"}
+                = value.header
+              %span.red_med
+                = formatDate(value.date)
+      - if @news.num_pages >= 1
+        .more.pagination
+          %a.pages{:href => "javascript:void(0)"} Страницы:
+          %a.active{:href => "javascript:void(0)"} 1
+          - 1.upto(@news.num_pages - 1) do |i|
+            %a{:href => "javascript:void(0)"}
+              = i+1

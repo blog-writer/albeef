@@ -1,0 +1,19 @@
+.main
+  #news_page
+    .pics_module
+    .middle_with_citat
+      .red_line
+        .middle_full_block.noPd
+          %h1 НОВОСТИ
+    .a_new_block
+      %h1
+        = @current_news.header
+      .body
+        .red_large.cf
+          = formatDate(@current_news.date)
+        = image_tag "/assets/news/db/#{@current_news.pic_title}"
+        .text_block
+          = @current_news.body.html_safe
+    %ul.paginator.right_align
+      %li
+        = link_to "Назад", "/news"

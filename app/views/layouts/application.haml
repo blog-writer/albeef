@@ -1,0 +1,32 @@
+!!!
+%html{:lang => "ru"}
+  %head
+    %meta{:content => "IE=8", "http-equiv" => "X-UA-Compatible"}
+    %title ООО "АЛБИФ"
+    %link{:href => "/assets/layout/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = styx_initialize
+  %body
+    .container
+      .thin_red_line
+        .middle
+      .header
+        .main_header
+          .inside_block
+            .top_part
+              = link_to( image_tag("/assets/layout/logo.png"), "/", {:class => "logo cf"} )
+              %ul.menu.cf
+                = render "layouts/menu"
+      = yield
+      .footer
+        .middle
+          .middle_wrap
+            .copyrights.cf
+              %ul
+                = render "layouts/menu"
+              %p &copy; <span class="year">2012</span> ООО "АЛБИФ". Все права защищены.
+            .footer_logo.cf
+
+

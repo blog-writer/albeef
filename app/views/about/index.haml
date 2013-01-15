@@ -1,0 +1,16 @@
+.main
+  #about_page
+    .tabs_module.mission_tab
+      .title
+      %ul.tabs
+        %li.active{:id => "mission"}
+          =link_to "миссия", "javascript:void(0)"
+        %li{:id => "production"}
+          =link_to "структура", "javascript:void(0)"
+        %li{:id => "quality"}
+          =link_to "качество", "javascript:void(0)"
+          %a{:href => "javascript:void(0)"}
+
+    = render "about/mission"
+    = render "about/structure"
+    = render "about/quality"
